@@ -1,0 +1,9 @@
+{
+  "name": "taiwandict-to-terrapinyin",
+  "version": "1.0.0",
+  "description": "將中華民國教育部《重編國語辭典修訂本》、《國語辭典簡編本》、《國語小字典》與《成語 典》轉換成 Rime 輸入法所接受的 Terra Pinyin 字典。",
+  "main": "index.js",
+  "repository": "git@github.com:taichunmin/taiwandict-to-terrapinyin.git",
+  "author": "taichunmin <taichunmin@gmail.com>",
+  "license": "MIT"
+}

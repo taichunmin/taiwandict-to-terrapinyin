@@ -4,6 +4,10 @@
 
 ## Usage
 
+直接下載 `terra_pinyin.taiwan.dict.yaml`，並參照 <https://github.com/taichunmin/rime-settings> 使用。
+
+## Generate
+
 ```
 node index.js terrapinyin
 ```

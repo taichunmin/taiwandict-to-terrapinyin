@@ -82,7 +82,7 @@ use_preset_vocabulary: true
             let pinyins = _.trim(_.get(tmp, [1], '').replace(/\([^)]+\)|（[^）]+）/g, ' '))
             let terra = cmd.zhuyinToTerraPinyin(zhuyins, pinyins)
             if (!_.isNil(terra)) {
-              if (!/^[a-z0-9\t]*$/.test(terra)) {
+              if (!/^[a-z0-9 ]*$/.test(terra)) {
                 pinyinErrorCnt++
               }
               fout.write(word + (terra ? '\t' + terra : '') + '\n')
@@ -140,8 +140,8 @@ cmd.zhuyinToTerraPinyin = (zhuyins, pinyins) => {
       }
       cmd.terraPinyinCache[zhuyin] = cmd.strtr(pinyin, PINYIN_DEBURR[0], PINYIN_DEBURR[1]) + tone
     }
-    return cmd.terraPinyinCache[zhuyin] + (letterR ? '\tr1' : '')
-  }).join('\t')
+    return cmd.terraPinyinCache[zhuyin] + (letterR ? ' er1' : '')
+  }).join(' ')
 }
 
 const strtrCmp = (b, a) => (a.length !== b.length) ? a.length - b.length : (a > b ? 1 : -1)

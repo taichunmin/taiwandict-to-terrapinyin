@@ -1,6 +1,6 @@
 # 臺灣教育部字典轉 Rime 地球拼音字典
 
-將中華民國教育部《重編國語辭典修訂本》、《國語辭典簡編本》、《國語小字典》與《成語 典》轉換成 Rime 輸入法所接受的 Terra Pinyin 字典。
+將中華民國教育部《重編國語辭典修訂本》、《國語辭典簡編本》、《國語小字典》與《成語 典》轉換成 Rime 輸入法所接受的 Terra Pinyin 字典及我自己寫的 zhuyin_taichunmin。
 
 ## Usage
 
@@ -9,7 +9,10 @@
 ## Generate
 
 ```
-node index.js terrapinyin
+# terrapinyin
+yarn terrapinyin
+# zhuyin_taichunmin
+yarn zhuyin_taichunmin
 ```
 
 ## dict_revised 聲明

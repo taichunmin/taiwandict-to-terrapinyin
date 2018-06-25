@@ -1,11 +1,12 @@
 
 # generate by https://github.com/taichunmin/taiwandict-to-terrapinyin
+# encoding: utf-8
 # author: taichunmin <taichunmin@gmail.com>
 ---
 name: terra_pinyin.taiwan
 version: "2017.10.13"
 sort: by_weight
-use_preset_vocabulary: true
+use_preset_vocabulary: false
 ...
 八	ba1
 扒	ba1

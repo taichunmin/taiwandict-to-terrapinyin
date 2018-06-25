@@ -24,12 +24,13 @@ cmd.terrapinyin = async () => {
   // 輸出檔頭
   fout.write(`
 # generate by https://github.com/taichunmin/taiwandict-to-terrapinyin
+# encoding: utf-8
 # author: taichunmin <taichunmin@gmail.com>
 ---
 name: terra_pinyin.taiwan
 version: "2017.10.13"
 sort: by_weight
-use_preset_vocabulary: true
+use_preset_vocabulary: false
 ...
 `)
   let pinyinErrorCnt = 0
@@ -211,12 +212,13 @@ cmd.zhuyinTaichunmin = async () => {
   // 輸出檔頭
   fout.write(`
 # generate by https://github.com/taichunmin/taiwandict-to-terrapinyin
+# encoding: utf-8
 # author: taichunmin <taichunmin@gmail.com>
 ---
 name: zhuyin_taichunmin
 version: "1"
 sort: by_weight
-use_preset_vocabulary: true
+use_preset_vocabulary: false
 ...
 `)
   let zhuyinErrorCnt = 0
@@ -290,11 +292,20 @@ cmd.zhuyinToRimeKeyMap = _.zipObject(
   cmd.zhuyinToRimeKeyMapArray[1].split(''),
 )
 
+/**
+ * 將注音符號轉換成 Rime 內部的按鍵代碼
+ * @param {*} zhuyins 注音符號
+ */
 cmd.zhuyinToRimeKey = zhuyins => {
   zhuyins = _.compact(zhuyins.split(/[　\s]+/)) // eslint-disable-line no-irregular-whitespace
   return _.map(zhuyins, zhuyin => {
+    // 在連著 ㄦ 的詞中間加上空格
     if (/^.+ㄦ$/.test(zhuyin)) zhuyin = zhuyin.replace(/ㄦ$/, ' ㄦ')
+    // 將注音符號轉換成 Rime 內部的按鍵代碼
     let tmp = _.map(zhuyin, char => _.get(cmd.zhuyinToRimeKeyMap, char, char)).join('')
+    // 處理輕聲 5 的狀況 "嗎 -> 5ma"
+    tmp = tmp.replace(/^(\d)([A-Za-z]+)$/, '$2$1')
+    // 處理一聲的狀況
     if (! /\d$/.test(tmp)) tmp += '1'
     return tmp
   }).join(' ')
